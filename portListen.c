@@ -21,18 +21,21 @@ int main(int argc, char **argv) {
 
     bind(server, (struct sockaddr*)&addr, sizeof(addr));
     listen(server, 1);
-
+   while(1){
     int client = accept(server, NULL, NULL);
 
     char buf[1024];
     ssize_t n;
-    while ((n = read(client, buf, sizeof(buf))) > 0) {
-        fwrite(buf, 1, n, stdout);
-        fflush(stdout);
-    }
+      n = read(client, buf, sizeof(buf));
+      if (n <= 0) {
+          close(client);
+          continue;
+      }
+      fwrite(buf, 1, n, stdout);
+      fflush(stdout);
 
-    close(client);
-    close(server);
-    return 0;
+   }
+   close(server);
+   return 0;
 }
 
