@@ -4,6 +4,9 @@
 ### Run it
 `$ ./portListen 5081`
 
+#### Stop The App
+FYI - The app runs a loop so to stop it you'll need to use CTRL-C
+
 #### Post To It Using Node JS Fetch
 1. Open another terminal
 2. start node
@@ -13,6 +16,7 @@ fetch("http://localhost:5081", { method: "POST", body: "Hello from fetch!" });
 ```
 #### Output
 You'll see the following in the terminal where the portListen app is running:
+
 <img width="422" height="205" alt="image" src="https://github.com/user-attachments/assets/b530b909-3f10-45c3-bcc4-f489540eed4b" />
 
 
